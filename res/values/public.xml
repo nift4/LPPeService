@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="ic_launcher" id="0x7f010000" />
+    <public type="id" name="button_1" id="0x7f020000" />
+    <public type="id" name="button_2" id="0x7f020001" />
+    <public type="id" name="button_3" id="0x7f020002" />
+    <public type="id" name="button_4" id="0x7f020003" />
+    <public type="id" name="button_5" id="0x7f020004" />
+    <public type="id" name="button_6" id="0x7f020005" />
+    <public type="id" name="fused_textview_info" id="0x7f020006" />
+    <public type="integer" name="google_play_services_version" id="0x7f030000" />
+    <public type="layout" name="activity_main" id="0x7f040000" />
+    <public type="string" name="action_settings" id="0x7f050000" />
+    <public type="string" name="app_name" id="0x7f050001" />
+    <public type="string" name="hello_world" id="0x7f050002" />
+    <public type="style" name="debug_info" id="0x7f060000" />
+    <public type="style" name="small_debug_info" id="0x7f060001" />
+</resources>

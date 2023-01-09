@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Created-By: soong_zip
+
+Name: AndroidManifest.xml
+SHA-256-Digest: Zk8L/BYW1kzabNIcDJbEQICMeaooavitZ1ydoCGiIbw=
+
+Name: classes.dex
+SHA-256-Digest: eMwes6i8Yiu8cvfDBZxmCS69IIjirp4hpBQF3UHGN8g=
+
+Name: res/drawable-hdpi-v4/ic_launcher.png
+SHA-256-Digest: JvcwK/K024RQvSdJmltwi/QZb9xRwAMaDwHadxnMMw0=
+
+Name: res/drawable-mdpi-v4/ic_launcher.png
+SHA-256-Digest: 2OTOrXSGQMgAymxeuphbQt3OppGmdjpnrugIJtT4iaM=
+
+Name: res/layout/activity_main.xml
+SHA-256-Digest: pfS5S7IVslMc6wPNcHr8LQYf1WWUsd9dPrlhON0zEsk=
+
+Name: resources.arsc
+SHA-256-Digest: p+Ubv8bWJNMKbjV3+uJ3xyco7/QiLg7F6sH2eZlZC2A=
+
