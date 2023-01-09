@@ -44,7 +44,7 @@
 
 
 # virtual methods
-.method public bridge synthetic connectionReady(Lcom/android/ims/FeatureUpdates;)V
+.method public bridge synthetic connectionReady(Lcom/android/ims/FeatureUpdates;I)V
     .locals 0
     .annotation system Ldalvik/annotation/Throws;
         value = {
