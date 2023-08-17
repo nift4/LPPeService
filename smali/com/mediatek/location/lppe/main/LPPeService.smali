@@ -3029,13 +3029,13 @@
 
     const-string v0, "assisted_gps_enabled"
 
-    const/4 v1, 0x0
+    const/4 v1, 0x1
 
     invoke-static {p0, v0, v1}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
 
     move-result p0
 
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     if-ne p0, v0, :cond_0
 
