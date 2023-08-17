@@ -3074,9 +3074,14 @@
 .end method
 
 .method private lbsProvideCapabilitiesHandler()V
-    .locals 4
+    .locals 5
+
+    invoke-direct {p0}, Lcom/mediatek/location/lppe/main/LPPeService;->isInEmergency()Z
+
+    move-result v4
 
     .line 1544
+
     iget-object v0, p0, Lcom/mediatek/location/lppe/main/LPPeService;->mTelephonyMgr:Landroid/telephony/TelephonyManager;
 
     const/4 v1, 0x0
@@ -3084,6 +3089,8 @@
     const/4 v2, 0x2
 
     const-string v3, ""
+
+    if-eqz v4, :cond_1
 
     if-eqz v0, :cond_1
 
