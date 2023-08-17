@@ -732,11 +732,6 @@
     .line 367
     invoke-virtual {p2, p3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    const-string p3, "android.location.PROVIDERS_CHANGED"
-
-    .line 368
-    invoke-virtual {p2, p3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
-
     const-string p3, "com.android.ims.IMS_SERVICE_UP"
 
     .line 369
@@ -909,9 +904,11 @@
     invoke-virtual {p1, v0}, Lcom/mediatek/location/lppe/ipaddr/LPPeIpAddress$LPPeIpAddressReceiver;->requestCapabilities(I)V
 
     .line 402
-    iget-object p0, p0, Lcom/mediatek/location/lppe/main/LPPeService;->mLbsReceiver:Lcom/mediatek/location/lppe/lbs/LPPeLbs$LPPeLbsReceiver;
+    iget-object p1, p0, Lcom/mediatek/location/lppe/main/LPPeService;->mLbsReceiver:Lcom/mediatek/location/lppe/lbs/LPPeLbs$LPPeLbsReceiver;
 
-    invoke-virtual {p0, v0}, Lcom/mediatek/location/lppe/lbs/LPPeLbs$LPPeLbsReceiver;->requestCapabilities(I)V
+    invoke-virtual {p1, v0}, Lcom/mediatek/location/lppe/lbs/LPPeLbs$LPPeLbsReceiver;->requestCapabilities(I)V
+
+    invoke-direct {p0}, Lcom/mediatek/location/lppe/main/LPPeService;->registerSettingsObserver()V
 
     return-void
 .end method
@@ -2971,20 +2968,71 @@
     .locals 0
 
     .line 1622
-    invoke-direct {p0}, Lcom/mediatek/location/lppe/main/LPPeService;->lbsNlpStatusUpdate()V
+    invoke-virtual {p0}, Lcom/mediatek/location/lppe/main/LPPeService;->lbsNlpStatusUpdate()V
 
     return-void
 .end method
 
-.method private lbsNlpStatusUpdate()V
+.method private registerSettingsObserver()V
+    .locals 7
+
+    iget-object v0, p0, Lcom/mediatek/location/lppe/main/LPPeService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v1
+
+    const-string v2, "assisted_gps_enabled"
+
+    invoke-static {v2}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v3
+
+    const/4 v4, 0x0
+
+    new-instance v5, Lcom/mediatek/location/lppe/main/LPPeService$11;
+
+    invoke-direct {v5, p0}, Lcom/mediatek/location/lppe/main/LPPeService$11;-><init>(Lcom/mediatek/location/lppe/main/LPPeService;)V
+
+    sget v6, Landroid/os/UserHandle;->USER_ALL:I
+
+    invoke-virtual {v1, v3, v4, v5, v6}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
+
+    return-void
+.end method
+
+.method private isAssistedGpsEnabled()Z
+    .locals 2
+
+    iget-object v0, p0, Lcom/mediatek/location/lppe/main/LPPeService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object p0
+
+    const-string v0, "assisted_gps_enabled"
+
+    const/4 v1, 0x0
+
+    invoke-static {p0, v0, v1}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result p0
+
+    const/4 v0, 0x1
+
+    if-ne p0, v0, :cond_0
+
+    move v1, v0
+
+    :cond_0
+    return v1
+.end method
+
+.method public lbsNlpStatusUpdate()V
     .locals 3
 
     .line 1613
-    iget-object v0, p0, Lcom/mediatek/location/lppe/main/LPPeService;->mLocationManager:Landroid/location/LocationManager;
-
-    const-string v1, "network"
-
-    invoke-virtual {v0, v1}, Landroid/location/LocationManager;->isProviderEnabled(Ljava/lang/String;)Z
+    invoke-direct {p0}, Lcom/mediatek/location/lppe/main/LPPeService;->isAssistedGpsEnabled()Z
 
     move-result v0
 
@@ -3119,7 +3167,7 @@
     invoke-direct {p0}, Lcom/mediatek/location/lppe/main/LPPeService;->lbsBatteryForceUpdate()V
 
     .line 1565
-    invoke-direct {p0}, Lcom/mediatek/location/lppe/main/LPPeService;->lbsNlpStatusUpdate()V
+    invoke-virtual {p0}, Lcom/mediatek/location/lppe/main/LPPeService;->lbsNlpStatusUpdate()V
 
     return-void
 .end method
